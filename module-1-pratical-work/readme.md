@@ -7,8 +7,7 @@ https://github.com/Igorcbraz/Bootcamp-Node-XPE/tree/main/Trabalho%20Pratico%20-%
 
 Required terminal commands:
 
-- npm init -y
-- npm install express
-- npm install nodemon
+- npm install
+- nodemon index.js
 
 Graciously,

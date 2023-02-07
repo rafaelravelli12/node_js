@@ -8,6 +8,7 @@ export const moreModels = (req, res) => {
 		.filter(obj => obj.models.length === maxModelsLength)
 		.map(obj => obj.brand);
 	const response = modelWithMoreBrands.length === 1 ? modelWithMoreBrands[0] : modelWithMoreBrands
+
 	res.status(200).send(response)
 };
 
@@ -17,6 +18,7 @@ export const lessModels = (req, res) => {
 		.filter(obj => obj.models.length === minModelsLength)
 		.map(obj => obj.brand);
 	const response = modelWithLessBrands.length === 1 ? modelWithLessBrands[0] : modelWithLessBrands
+
 	res.status(200).send(response)
 };
 
@@ -30,7 +32,7 @@ export const listMoreModels = (req, res) => {
 	});
 	const formattedList = countedModels
 		.sort((a, b) => a.brand.localeCompare(b.brand))
-		.sort((a, b) => a.numofModels - b.numOfModels)
+		.sort((a, b) => b.numOfModels - a.numOfModels)
 		.slice(0, qtd)
 		.map(obj => {
 			return `${obj.brand} - ${obj.numOfModels}`
@@ -49,11 +51,22 @@ export const ListLessModels = (req, res) => {
 	});
 	const formattedList = countedModels
 		.sort((a, b) => a.brand.localeCompare(b.brand))
-		.sort((a, b) => a.numofModels - b.numOfModels)
+		.sort((a, b) => a.numOfModels - b.numOfModels)
 		.slice(0, qtd)
 		.map(obj => {
 			return `${obj.brand} - ${obj.numOfModels}`
 		});
 
 	res.status(200).send(formattedList);
+};
+
+export const listModels = (req, res) => {
+	const { brandName } = req.body;
+
+	const brandModels = cars
+		.filter(obj => obj.brand.toUpperCase() === brandName.toUpperCase())
+		.map(obj => obj.models)
+		.flat();
+
+	res.status(200).send(brandModels);
 };

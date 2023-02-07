@@ -1,5 +1,10 @@
 import express from "express";
-import { moreModels } from "../src/service.js";
+import {
+	moreModels,
+	lessModels,
+	listMoreModels,
+	ListLessModels
+} from "../src/service.js";
 
 // import {
 // 	moreModels,
@@ -12,3 +17,6 @@ import { moreModels } from "../src/service.js";
 export const router = express.Router();
 
 router.get("/moreModels", moreModels);
+router.get("/lessModels", lessModels);
+router.get("/listMoreModels/:qtd", listMoreModels);
+router.get("/ListLessModels/:qtd", ListLessModels);

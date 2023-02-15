@@ -11,4 +11,7 @@ Required terminal commands:
 - npm install
 - nodemon index.js
 
+Endpoints tested with Insomnia:
+https://insomnia.rest/download
+
 Graciously,

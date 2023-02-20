@@ -1,7 +1,15 @@
 import DeliveryRepository from "../repositories/repository.js";
 
-async function newOrder(order) {
-	return await DeliveryRepository.newOrder(order);
+async function createOrder(order) {
+	return await DeliveryRepository.createOrder(order);
+}
+
+async function getOrders() {
+	return await DeliveryRepository.getOrders();
+}
+
+async function getOrder(id) {
+	return await DeliveryRepository.getOrder(id);
 }
 
 async function updateOrder(order) {
@@ -18,16 +26,8 @@ async function deleteOrder(id) {
 	return await DeliveryRepository.deleteOrder(id)
 }
 
-async function getOrders() {
-	return await DeliveryRepository.getOrders();
-}
-
-async function getOrder(id) {
-	return await DeliveryRepository.getOrder(id);
-}
-
 export default {
-	newOrder,
+	createOrder,
 	updateOrder,
 	updateDeliverOrder,
 	deleteOrder,

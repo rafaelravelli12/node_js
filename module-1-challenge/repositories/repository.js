@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 const { readFile, writeFile } = fs;
 
-async function newOrder(order) {
+async function createOrder(order) {
 	const data = JSON.parse(await readFile("pedidos.json"));
 	order = {
 		id: data.nextId++,
@@ -14,20 +14,6 @@ async function newOrder(order) {
 	data.orders.push(order);
 	await writeFile("pedidos.json", JSON.stringify(data, null, 2));
 	return order;
-}
-
-async function updateOrder(order) {
-	const data = JSON.parse(await readFile("pedidos.json"));
-	const index = data.orders.findIndex(a => a.id === order.id);
-	if (index === -1) {
-		throw new Error("Record not found");
-	};
-	data.orders[index].cliente = order.cliente;
-	data.orders[index].produto = order.produto;
-	data.orders[index].valor = order.valor;
-	data.orders[index].entregue = order.entregue;
-	await writeFile("pedidos.json", JSON.stringify(data, null, 2));
-	return data.orders[index];
 }
 
 async function getOrders() {
@@ -44,6 +30,20 @@ async function getOrder(id) {
 	throw new Error("Record not found");
 }
 
+async function updateOrder(order) {
+	const data = JSON.parse(await readFile("pedidos.json"));
+	const index = data.orders.findIndex(a => a.id === order.id);
+	if (index === -1) {
+		throw new Error("Record not found");
+	};
+	data.orders[index].cliente = order.cliente;
+	data.orders[index].produto = order.produto;
+	data.orders[index].valor = order.valor;
+	data.orders[index].entregue = order.entregue;
+	await writeFile("pedidos.json", JSON.stringify(data, null, 2));
+	return data.orders[index];
+}
+
 async function deleteOrder(id) {
 	const data = JSON.parse(await readFile("pedidos.json"));
 	data.orders = data.orders.filter(order => order.id !== parseInt(id));
@@ -51,7 +51,7 @@ async function deleteOrder(id) {
 }
 
 export default {
-	newOrder,
+	createOrder,
 	updateOrder,
 	getOrders,
 	getOrder,

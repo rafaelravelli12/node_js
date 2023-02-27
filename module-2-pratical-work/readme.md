@@ -2,7 +2,7 @@
 
 ### Estimeed Sirs,
 
-The present solution is based on angeloassis13's repository (acessed 02/27/2023):
+The present solution is based on XPE Teacher angeloassis13's repository (acessed 02/27/2023):
 
 https://github.com/angeloassis13/my-bank-api
 

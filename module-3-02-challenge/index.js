@@ -4,6 +4,7 @@ import winston from "winston";
 import proprietarioRouter from "./routes/proprietario.route.js";
 import animalRouter from "./routes/animal.route.js";
 import servicoRouter from "./routes/servico.route.js";
+import postRouter from "./routes/post.route.js";
 
 // winston
 const { combine, timestamp, label, printf } = winston.format;
@@ -29,10 +30,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/', (req, res) =>
+	res.send("<h3>Rotas no Express</h3><p>Rota '/'")
+);
 app.use("/proprietario", proprietarioRouter);
 app.use("/animal", animalRouter);
 app.use("/servico", servicoRouter);
-
+app.use("/post", postRouter);
 
 app.use((err, req, res, next) => {
 	logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);

@@ -1,7 +1,10 @@
-import Sequelize from "sequelize";
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const sequelize = new Sequelize(
-	"postgres://vujytmji:J_j5Q_klLwRWeedIf7lYqw0ggV4eGqKX@mouse.db.elephantsql.com/vujytmji",
+	process.env.POSTGRES_URI_ELEPHANTSQL,
 	{
 		dialect: "postgres",
 		define: {

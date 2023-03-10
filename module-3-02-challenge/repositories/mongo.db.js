@@ -1,7 +1,10 @@
 import mongodb from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 function getClient() {
-	const uri = "mongodb+srv://rafaelravelli:IELvkb4sjs2GQFTw@cluster-xpe-module-3-ch.ryleqyn.mongodb.net/test";
+	const uri = process.env.MONGO_URI_COMPASS;
 	return new mongodb.MongoClient(uri);
 }
 

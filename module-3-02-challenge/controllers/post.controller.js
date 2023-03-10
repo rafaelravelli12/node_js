@@ -14,7 +14,17 @@ async function createPost(req, res, next) {
 async function getAllPosts(req, res, next) {
 	try {
 		res.send(await PostService.getAllPosts());
-		logger.info("GET /product/product/info");
+		logger.info("GET /post");
+	} catch (err) {
+		next(err);
+	}
+}
+
+async function createComment(req, res, next) {
+	try {
+		let params = req.body;
+		res.send(await PostService.createComment(params._id, params.comentarios));
+		logger.info("POST /post/comment");
 	} catch (err) {
 		next(err);
 	}
@@ -22,5 +32,6 @@ async function getAllPosts(req, res, next) {
 
 export default {
 	createPost,
-	getAllPosts
+	getAllPosts,
+	createComment
 };

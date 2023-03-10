@@ -30,9 +30,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) =>
-	res.send("<h3>Rotas no Express</h3><p>Rota '/'")
-);
 app.use("/proprietario", proprietarioRouter);
 app.use("/animal", animalRouter);
 app.use("/servico", servicoRouter);

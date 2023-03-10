@@ -8,7 +8,12 @@ async function getAllPosts() {
 	return await PostRepository.getAllPosts();
 }
 
+async function createComment(postId, comentario) {
+	return await PostRepository.createComment(postId, comentario);
+}
+
 export default {
 	createPost,
-	getAllPosts
+	getAllPosts,
+	createComment
 };

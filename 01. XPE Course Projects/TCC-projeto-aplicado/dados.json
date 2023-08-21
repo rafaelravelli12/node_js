@@ -1,0 +1,30 @@
+[
+	{
+		"id": 1,
+		"titulo": "Navegando pela Histório Moderna",
+		"ano_de_lancamento": "2020",
+		"quantidade_em_estoque": 3,
+		"disciplina": "História"
+	},
+	{
+		"id": 2,
+		"titulo": "Biologia para ensino fundamental",
+		"ano_de_lancamento": "2015",
+		"quantidade_em_estoque": 5,
+		"disciplina": "Biologia"
+	},
+	{
+		"id": 3,
+		"titulo": "Matemática de A a Z",
+		"ano_de_lancamento": "2018",
+		"quantidade_em_estoque": 10,
+		"disciplina": "Matemática"
+	},
+	{
+		"id": 4,
+		"titulo": "Manual da Língua Portuguesa",
+		"ano_de_lancamento": "2022",
+		"quantidade_em_estoque": 18,
+		"disciplina": "Português"
+	}
+]

@@ -26,5 +26,12 @@
 		"ano_de_lancamento": "2022",
 		"quantidade_em_estoque": 18,
 		"disciplina": "Português"
+	},
+	{
+		"id": 5,
+		"titulo": "English Course",
+		"ano_de_lancamento": "2021",
+		"quantidade_em_estoque": 8,
+		"disciplina": "Inglês"
 	}
 ]

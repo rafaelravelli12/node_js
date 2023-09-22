@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "940f5890-4af8-4a53-b386-a1f953244124",
+		"name": "xpe-tcc-projeto-aplicado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20905046",
+		"_collection_link": "https://iopaypostmanteam.postman.co/workspace/iopay-workspace~90afebc0-5542-4251-bf00-d4c65a174a2f/collection/20905046-940f5890-4af8-4a53-b386-a1f953244124?action=share&source=collection_link&creator=20905046"
+	},
+	"item": [
+		{
+			"name": "getBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:4000/getBooks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"getBooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addBook",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"a\",\r\n    \"ano_de_lancamento\": \"a\",\r\n    \"quantidade_em_estoque\": 3,\r\n    \"disciplina\": \"a\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:4000/addBook",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "4000",
+					"path": [
+						"addBook"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

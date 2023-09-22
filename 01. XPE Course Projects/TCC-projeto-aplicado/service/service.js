@@ -1,9 +1,10 @@
 import mysql from "mysql2/promise";
 
+const dbPassword = process.env.DB_PASSWORD;
 const pool = mysql.createPool({
 	host: "127.0.0.1", // or "localhost"
 	user: "root",
-	password: "root",
+	password: process.env.DB_PASSWORD,
 	database: "xpe-tcc-projeto-aplicado"
 });
 
@@ -20,23 +21,6 @@ export const getBooks = async (req, res) => {
 	}
 };
 
-// export const addBook = async (req, res) => {
-// 	try {
-// 		const { id, titulo, ano_de_lancamento, quantidade_em_estoque, disciplina } = req.body;
-
-// 		const connection = await pool.getConnection();
-// 		await connection.execute(
-// 			"INSERT INTO acervo (id, titulo, ano_de_lancamento, quantidade_em_estoque, disciplina) VALUES (?, ?, ?, ?, ?)",
-// 			[id, titulo, ano_de_lancamento, quantidade_em_estoque, disciplina]
-// 		);
-// 		connection.release();
-
-// 		res.status(201).send("Book added successfully");
-// 	} catch (error) {
-// 		console.error("Error:", error);
-// 		res.status(500).send("Internal Server Error");
-// 	}
-// }
 export const addBook = async (req, res) => {
 	try {
 		const { titulo, ano_de_lancamento, quantidade_em_estoque, disciplina } = req.body;
@@ -54,7 +38,6 @@ export const addBook = async (req, res) => {
 		res.status(500).send("Internal Server Error");
 	}
 };
-
 
 // export const updateBook = async (req, res) => {
 // 	try {

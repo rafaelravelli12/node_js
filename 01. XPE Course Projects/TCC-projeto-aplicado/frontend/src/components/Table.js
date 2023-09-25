@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import the Link component
 
 const Table = () => {
 	const tableStyle = {
@@ -23,8 +24,7 @@ const Table = () => {
 
 	const [data, setData] = useState([]); // State to store the fetched data
 
-	// Function to fetch data from the backend API
-	const fetchData = async () => {
+	const fetchData = async () => { // Function to fetch data from the backend API
 		try {
 			const response = await fetch('http://localhost:4000/getBooks');
 			if (!response.ok) {
@@ -37,14 +37,13 @@ const Table = () => {
 		}
 	};
 
-	// Use the useEffect hook to fetch data when the component mounts
-	useEffect(() => {
+	useEffect(() => {// Use the useEffect hook to fetch data when the component mounts
 		fetchData();
 	}, []); // The empty array [] as the second argument ensures this runs only once when the component mounts
 
 	return (
 		<div>
-			<h2 style={{ textAlign: 'center' }}>Acervo Biblioteca</h2>
+			<h2 style={{ textAlign: 'center' }}>Acervo Biblioteca - Escola AVANÇO</h2>
 			<table style={tableStyle}>
 				<thead>
 					<tr>
@@ -65,8 +64,9 @@ const Table = () => {
 							<td style={tdStyle}>{item.quantidade_em_estoque}</td>
 							<td style={tdStyle}>{item.disciplina}</td>
 							<td style={tdStyle}>
-								<button>Edit</button>
-								<button>Delete</button>
+								<Link to={`/edit/${item.id}`}>Edit</Link>
+								<br></br>
+								<Link to={`/delete/${item.id}`}>Delete</Link>
 							</td>
 						</tr>
 					))}

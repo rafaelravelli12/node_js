@@ -1,76 +1,112 @@
-// AddBook.js
+// EditBook.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'; // Import useParams to access URL parameters
 
-const AddBook = () => {
-	// Define state variables for form fields
-	const [titulo, setTitulo] = useState('');
-	const [ano_de_lancamento, setAnoDeLancamento] = useState('');
-	const [quantidade_em_estoque, setQuantidadeEmEstoque] = useState('');
-	const [disciplina, setDisciplina] = useState('');
+const EditBook = () => {
+	const { id } = useParams(); // Access the 'id' URL parameter
+	const [book, setBook] = useState({
+		titulo: '',
+		ano_de_lancamento: '',
+		quantidade_em_estoque: '',
+		disciplina: '',
+	});
 
-	// Function to handle form submission
+	useEffect(() => {
+		const fetchBook = async () => {
+			try {
+				const response = await fetch(`http://localhost:4000/getBook/${id}`);
+				if (!response.ok) {
+					throw new Error('Network response was not ok');
+				}
+				const bookData = await response.json();
+				setBook(bookData);
+			} catch (error) {
+				console.error('Error:', error);
+			}
+		};
+
+		fetchBook();
+	}, [id]); // Use 'id' from useParams as the dependency
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
 		try {
-			// Send a POST request to the backend to add the book
-			const response = await fetch('/books', {
-				method: 'POST',
+			const response = await fetch(`http://localhost:4000/updateBook/${id}`, {
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify({
-					titulo,
-					ano_de_lancamento,
-					quantidade_em_estoque,
-					disciplina,
-				}),
+				body: JSON.stringify(book),
 			});
-
 			if (response.ok) {
-				// Book added successfully, you can redirect to a different route or display a success message
-				console.log('Book added successfully');
+				console.log('Book updated successfully');
 			} else {
-				console.error('Failed to add book.');
+				console.error('Failed to update book.');
 			}
 		} catch (error) {
 			console.error('Error:', error);
 		}
 	};
 
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setBook({
+			...book,
+			[name]: value,
+		});
+	};
+
 	return (
 		<div>
-			<h2>Add Book</h2>
+			<h2 style={{ marginLeft: '10px' }}>Edit Book</h2>
 			<form onSubmit={handleSubmit}>
-				<label>Title:</label>
-				<input
-					type="text"
-					value={titulo}
-					onChange={(e) => setTitulo(e.target.value)}
-				/>
-				<label>Release Year:</label>
-				<input
-					type="text"
-					value={ano_de_lancamento}
-					onChange={(e) => setAnoDeLancamento(e.target.value)}
-				/>
-				<label>Stock Quantity:</label>
-				<input
-					type="text"
-					value={quantidade_em_estoque}
-					onChange={(e) => setQuantidadeEmEstoque(e.target.value)}
-				/>
-				<label>Discipline:</label>
-				<input
-					type="text"
-					value={disciplina}
-					onChange={(e) => setDisciplina(e.target.value)}
-				/>
-				<button type="submit">Add Book</button>
+				<div className="form-group">
+					<label style={{ marginLeft: '10px' }}>Title:</label>
+					<input style={{ marginLeft: '10px' }}
+						type="text"
+						className="form-control"
+						name="titulo"
+						value={book.titulo}
+						onChange={handleInputChange}
+					/>
+				</div>
+				<div className="form-group">
+					<label style={{ marginLeft: '10px' }}>Release Year:</label>
+					<input style={{ marginLeft: '10px' }}
+						type="text"
+						className="form-control"
+						name="ano_de_lancamento"
+						value={book.ano_de_lancamento}
+						onChange={handleInputChange}
+					/>
+				</div>
+				<div className="form-group">
+					<label style={{ marginLeft: '10px' }}>Stock Quantity:</label>
+					<input style={{ marginLeft: '10px' }}
+						type="text"
+						className="form-control"
+						name="quantidade_em_estoque"
+						value={book.quantidade_em_estoque}
+						onChange={handleInputChange}
+					/>
+				</div>
+				<div className="form-group">
+					<label style={{ marginLeft: '10px' }}>Discipline:</label>
+					<input style={{ marginLeft: '10px' }}
+						type="text"
+						className="form-control"
+						name="disciplina"
+						value={book.disciplina}
+						onChange={handleInputChange}
+					/>
+				</div>
+				<button type="submit" className="btn btn-primary" style={{ marginLeft: '10px' }}>
+					Update Book
+				</button>
 			</form>
 		</div>
 	);
 };
 
-export default AddBook;
+export default EditBook;

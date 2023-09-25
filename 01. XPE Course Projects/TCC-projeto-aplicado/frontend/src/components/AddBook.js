@@ -35,11 +35,11 @@ const AddBook = () => {
 
 	return (
 		<div>
-			<h2>Add Book</h2>
+			<h2 style={{ marginLeft: '10px' }}>Add Book</h2>
 			<form onSubmit={handleSubmit}>
 				<div className="form-group">
-					<label>Title:</label>
-					<input
+					<label style={{ marginLeft: '10px' }}>Title:</label>
+					<input style={{ marginLeft: '10px' }}
 						type="text"
 						className="form-control"
 						value={titulo}
@@ -47,8 +47,8 @@ const AddBook = () => {
 					/>
 				</div>
 				<div className="form-group">
-					<label>Release Year:</label>
-					<input
+					<label style={{ marginLeft: '10px' }}>Release Year:</label>
+					<input style={{ marginLeft: '10px' }}
 						type="text"
 						className="form-control"
 						value={ano_de_lancamento}
@@ -56,8 +56,8 @@ const AddBook = () => {
 					/>
 				</div>
 				<div className="form-group">
-					<label>Stock Quantity:</label>
-					<input
+					<label style={{ marginLeft: '10px' }}>Stock Quantity:</label>
+					<input style={{ marginLeft: '10px' }}
 						type="text"
 						className="form-control"
 						value={quantidade_em_estoque}
@@ -65,15 +65,15 @@ const AddBook = () => {
 					/>
 				</div>
 				<div className="form-group">
-					<label>Discipline:</label>
-					<input
+					<label style={{ marginLeft: '10px' }}>Discipline:</label>
+					<input style={{ marginLeft: '10px' }}
 						type="text"
 						className="form-control"
 						value={disciplina}
 						onChange={(e) => setDisciplina(e.target.value)}
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-primary" style={{ marginLeft: '10px' }}>
 					Add Book
 				</button>
 			</form>

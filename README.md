@@ -4,6 +4,6 @@
 
 ### Estimeed Sirs,
 
-This repository is being used to allocate my public projects using Node.js.
+This repository is being used as showcase for courses and personal projects using Node.js.
 
 Graciously,

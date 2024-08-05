@@ -1,9 +1,11 @@
-# Projects Node.js
+<img src="node_js_logo.jpg" width="300" />
 
-![image](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![GitHub commits](https://img.shields.io/github/commit-activity/m/rafaelravelli12/node_js)
+
+# Node.js
 
 ### Estimeed Sirs,
 
-This repository is being used as showcase for courses and personal projects using Node.js.
+This repository is being used as a showcase for courses and personal projects using Node.js.
 
 Graciously,
